@@ -110,6 +110,9 @@ for num_qubits in qubits:
         grad2 = qml.grad(qcircuit2, argnum=0)
 
         random_params = np.random.uniform(0, np.pi, size=(num_qubits))
+        
+
+
         grant_initialization = np.array([random_params, -random_params])
         gradient2 = grad2(
             grant_initialization, random_gate_sequence=random_gate_sequence, num_qubits=num_qubits
