@@ -53,9 +53,6 @@ def rand_circuit(params, random_gate_sequence=None, num_qubits=None):
         float: the expectation value of the target observable
     """
     for i in range(num_qubits):
-        qml.Hadamard(wires=i)
-
-    for i in range(num_qubits):
         random_gate_sequence[i](params[0, i], wires=i)
 
     for i in range(num_qubits):
@@ -84,7 +81,7 @@ num_samples = 200
 # of qubits.
 
 
-qubits = [1, 2, 3, 4, 5, 6]
+qubits = [1, 2, 3, 4]
 variances_grant = []
 variances_random = []
 gate_set = [qml.RX, qml.RY, qml.RZ]
@@ -125,6 +122,9 @@ for num_qubits in qubits:
 
 variances_random = np.array(variances_random)
 variances_grant = np.array(variances_grant)
+
+print("Variances with random init", variances_random)
+print("Variances with Grant init", variances_grant)
 
 qubits = np.array(qubits)
 
